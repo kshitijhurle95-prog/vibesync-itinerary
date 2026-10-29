@@ -1,4 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Moon, Sun } from 'lucide-react';
 import Hero from './components/Hero.jsx';
 import Loading from './components/Loading.jsx';
 import Dashboard from './components/Dashboard.jsx';
@@ -11,7 +12,16 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [request, setRequest] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
   const abortRef = useRef(null);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const handleSubmit = useCallback(async (payload) => {
     abortRef.current?.abort();
@@ -29,7 +39,8 @@ export default function App() {
     setStatus('loading');
 
     try {
-      const data = await generateItinerary(payload, controller.signal);
+      const minDelay = window.__MIN_LOADING_MS ? new Promise((r) => setTimeout(r, window.__MIN_LOADING_MS)) : Promise.resolve();
+      const [data] = await Promise.all([generateItinerary(payload, controller.signal), minDelay]);
       setResult(data);
       setStatus('done');
       window.scrollTo({ top: 0 });
@@ -59,12 +70,24 @@ export default function App() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 pb-24 pt-6 sm:px-8">
-      <header className="flex items-center gap-2.5">
-        <svg viewBox="0 0 32 32" className="size-7" aria-hidden="true">
-          <circle cx="12" cy="16" r="10" fill="#2F3CF0" />
-          <circle cx="20" cy="16" r="10" fill="#FF4F9A" className="mix-blend-multiply" />
-        </svg>
-        <span className="text-xl font-extrabold tracking-tight">VibeSync</span>
+      <header className="flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <svg viewBox="0 0 32 32" className="size-7" aria-hidden="true">
+            <circle cx="12" cy="16" r="10" fill="#2F3CF0" />
+            <circle cx="20" cy="16" r="10" fill="#FF4F9A" className="mix-blend-multiply dark:mix-blend-screen" />
+          </svg>
+          <span className="text-xl font-extrabold tracking-tight">VibeSync</span>
+        </div>
+        <button
+          id="theme-toggle-btn"
+          type="button"
+          onClick={() => setDarkMode((prev) => !prev)}
+          className="flex items-center gap-2 rounded-full border-2 border-ink bg-white/50 px-3.5 py-1.5 text-xs font-bold transition-all hover:bg-ink hover:text-white dark:bg-white/10"
+          title="Toggle Dark Mode"
+        >
+          {darkMode ? <Sun className="size-4 text-sun" /> : <Moon className="size-4 text-cobalt" />}
+          <span>{darkMode ? 'Light mode' : 'Dark mode'}</span>
+        </button>
       </header>
 
       <main>

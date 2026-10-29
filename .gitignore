@@ -13,3 +13,7 @@ coverage/
 .vscode/
 .gemini/
 **/scratch/
+demo_video/*.mp4
+demo_video/*.mp3
+demo_video/*_raw.mp3
+demo_video/audio_concat.txt

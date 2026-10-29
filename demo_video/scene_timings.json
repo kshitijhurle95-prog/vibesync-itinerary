@@ -1,0 +1,61 @@
+{
+  "total_duration": 138.42,
+  "scenes": [
+    {
+      "id": "scene_1",
+      "title": "Problem & Vision",
+      "start": 0.0,
+      "audio_duration": 22.1,
+      "duration": 22.9,
+      "end": 22.9
+    },
+    {
+      "id": "scene_2",
+      "title": "Interactive Input & Multi-Day Planning",
+      "start": 22.9,
+      "audio_duration": 22.34,
+      "duration": 23.14,
+      "end": 46.05
+    },
+    {
+      "id": "scene_3",
+      "title": "Autonomous Agent Pipeline in Action",
+      "start": 46.05,
+      "audio_duration": 17.38,
+      "duration": 18.18,
+      "end": 64.22
+    },
+    {
+      "id": "scene_4",
+      "title": "Aesthetic Profile & Qloo Taste Graph Grounding",
+      "start": 64.22,
+      "audio_duration": 18.26,
+      "duration": 19.06,
+      "end": 83.29
+    },
+    {
+      "id": "scene_5",
+      "title": "Hour-by-Hour Itinerary & Taste-Match Precision",
+      "start": 83.29,
+      "audio_duration": 18.12,
+      "duration": 18.92,
+      "end": 102.21
+    },
+    {
+      "id": "scene_6",
+      "title": "Candidate Places & Pipeline Transparency Trace",
+      "start": 102.21,
+      "audio_duration": 16.85,
+      "duration": 17.65,
+      "end": 119.86
+    },
+    {
+      "id": "scene_7",
+      "title": "Multi-Day Navigation, Plain-Text Export & Wrap-up",
+      "start": 119.86,
+      "audio_duration": 17.76,
+      "duration": 18.56,
+      "end": 138.42
+    }
+  ]
+}

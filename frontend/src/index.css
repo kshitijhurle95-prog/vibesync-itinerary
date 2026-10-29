@@ -18,6 +18,25 @@
     color: var(--color-ink);
     color-scheme: light;
     scroll-behavior: smooth;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  html.dark {
+    --color-paper: #0c101a;
+    --color-ink: #f0f3fa;
+    --color-ink-soft: #9aa4be;
+    --color-cobalt: #596bf7;
+    --color-flamingo: #ff65a9;
+    --color-sun: #ffd84d;
+    color-scheme: dark;
+  }
+  html.dark .bg-white {
+    background-color: #151b2a !important;
+  }
+  html.dark .bg-paper\/60 {
+    background-color: rgba(21, 27, 42, 0.8) !important;
+  }
+  html.dark input {
+    color: var(--color-ink);
   }
   body {
     font-family: var(--font-display);
